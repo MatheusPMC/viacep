@@ -10,5 +10,10 @@ void main() {
     var response = await http.get(url);
     var body = json.decode(response.body);
     print(body);
+
+    (querySelector('#state') as InputElement).value = body['uf'];
+    (querySelector('#city') as InputElement).value = body['localidade'];
+    (querySelector('#neighborhood') as InputElement).value = body['bairro'];
+    (querySelector('#street') as InputElement).value = body['logradouro'];
   });
 }
