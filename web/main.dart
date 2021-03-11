@@ -1,5 +1,14 @@
 import 'dart:html';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 void main() {
-  querySelector('#output').text = 'Your Dart app is running.';
+  querySelector('#search').onClick.listen((a) async {
+    var cep = (querySelector('#cep') as InputElement).value;
+    var url = 'https://viacep.com.br/ws/$cep/json/';
+
+    var response = await http.get(url);
+    var body = json.decode(response.body);
+    print(body);
+  });
 }
